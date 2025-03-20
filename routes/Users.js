@@ -16,8 +16,8 @@ router.get('/',async (req,res)=>{
 
 router.get('/:id',async (req,res)=>{
     try {
-        const [user] = await pool.query("SELECT * FROM users WHERE id = $1",[req.params.id]);
-        if(user.rows.length === 0){
+        const [user] = await pool.query("SELECT * FROM user WHERE id = ?",[req.params.id]);
+        if(user.length === 0){
             return res.status(404).json({message:"User not found"});
         }
         res.status(200).json(user[0]);
