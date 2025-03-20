@@ -1,23 +1,18 @@
--- Disable foreign key checks to prevent dependency issues
 SET FOREIGN_KEY_CHECKS = 0;
 
--- Drop existing tables if they exist
 DROP TABLE IF EXISTS sponsorship;
 DROP TABLE IF EXISTS orphan;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS orphanage;
 
--- Enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
 
--- Create the orphanage table first (as orphan depends on it)
 CREATE TABLE orphanage (
     id       INT AUTO_INCREMENT PRIMARY KEY,
     name     VARCHAR(150) NOT NULL,
     location VARCHAR(255) NOT NULL
 );
 
--- Create the user table (needed for sponsorships)
 CREATE TABLE user (
     id        INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -26,7 +21,6 @@ CREATE TABLE user (
     role      ENUM('donor', 'sponsor', 'volunteer', 'admin') NOT NULL
 );
 
--- Create the orphan table (depends on orphanage)
 CREATE TABLE orphan (
     id           INT AUTO_INCREMENT PRIMARY KEY,
     full_name    VARCHAR(100) NOT NULL,
@@ -37,7 +31,6 @@ CREATE TABLE orphan (
     FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE
 );
 
--- Create the sponsorship table (depends on orphan and user)
 CREATE TABLE sponsorship (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     sponsor_id  INT NOT NULL,
