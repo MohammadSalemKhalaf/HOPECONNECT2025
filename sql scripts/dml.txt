@@ -1,0 +1,23 @@
+INSERT INTO orphanage (name, location) 
+VALUES 
+('Gaza Orphanage', 'Gaza City'),
+('Hope Home', 'Rafah');
+
+-- Insert sample users (sponsors, donors, volunteers)
+INSERT INTO user (full_name, email, password, role) 
+VALUES 
+('John Doe', 'john@example.com', 'hashedpassword123', 'sponsor'),
+('Alice Brown', 'alice@example.com', 'hashedpassword456', 'donor'),
+('Sarah Lee', 'sarah@example.com', 'hashedpassword789', 'volunteer');
+
+-- Insert sample orphans
+INSERT INTO orphan (full_name, age, gender, notes, orphanage_id) 
+VALUES 
+('Omar Khaled', 7, 'male', 'Healthy and in primary school', 1),
+('Amina Hassan', 9, 'female', 'Needs medical support', 2);
+
+-- Insert sample sponsorships
+INSERT INTO sponsorship (sponsor_id, orphan_id, amount, start_date, status) 
+VALUES 
+(1, 1, 100.00, '2025-03-18', 'active'),
+(1, 2, 50.00, '2025-03-18', 'active');
