@@ -1,6 +1,6 @@
 import express from 'express';
-import orphans from './routes/Orphans.js';
-import users from './routes/Users.js';
+import orphans from './src/routes/Orphans.js';
+import users from './src/routes/Users.js';
 const app= express();
 
 // middleware
