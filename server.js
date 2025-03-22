@@ -3,6 +3,7 @@ import orphans from './routes/Orphans.js';
 import users from './routes/Users.js';
 const app= express();
 
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -20,6 +21,10 @@ app.get('/',(req,res)=>{
 
 
 
+
 app.listen(8000,()=>{
     console.log('Server is running on port 8000');
 })
+
+
+

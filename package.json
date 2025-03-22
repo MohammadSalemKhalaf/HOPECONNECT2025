@@ -12,6 +12,6 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "mysql2": "^3.13.0"
+    "mysql2": "^3.14.0"
   }
 }
