@@ -3,6 +3,7 @@ import orphans from './routes/Orphans.js';
 import users from './routes/Users.js';
 const app= express();
 
+const PORT = process.env.PORT || 8000;
 
 // middleware
 app.use(express.json());
@@ -22,8 +23,8 @@ app.get('/',(req,res)=>{
 
 
 
-app.listen(8000,()=>{
-    console.log('Server is running on port 8000');
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
 })
 
 
