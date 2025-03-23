@@ -1,6 +1,6 @@
 import express from 'express';
-import orphans from './routes/Orphans.js';
-import users from './routes/Users.js';
+import orphans from './routes/orphanRoutes.js';
+import users from './routes/userRoutes.js';
 const app= express();
 
 const PORT = process.env.PORT || 8000;
