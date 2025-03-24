@@ -83,32 +83,5 @@ CREATE TABLE sponsorship (
     next_payment_date DATE,
     notes TEXT,
     FOREIGN KEY (sponsor_id) REFERENCES user(id) ON DELETE CASCADE,
-    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE CASCADE,
-    FOREIGN KEY (payment_method_id) REFERENCES payment_method(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-CREATE TABLE activity_log (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    orphan_id INT,
-    action VARCHAR(255) NOT NULL,
-    details TEXT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL,
-    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE SET NULL
-);
-
-CREATE TABLE volunteer_task (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    orphanage_id INT,
-    description TEXT NOT NULL,
-    due_date DATE,
-    status ENUM('open', 'in progress', 'completed', 'cancelled') DEFAULT 'open',
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
-    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE SET NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE CASCADE
 );
