@@ -4,40 +4,111 @@ DROP TABLE IF EXISTS sponsorship;
 DROP TABLE IF EXISTS orphan;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS orphanage;
+DROP TABLE IF EXISTS activity_log;
+DROP TABLE IF EXISTS volunteer_task;
+DROP TABLE IF EXISTS payment_method;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE orphanage (
-    id       INT AUTO_INCREMENT PRIMARY KEY,
-    name     VARCHAR(150) NOT NULL,
-    location VARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    contact_name VARCHAR(100),
+    contact_phone VARCHAR(20),
+    contact_email VARCHAR(150),
+    description TEXT,
+    established_date DATE,
+    registration_number VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user (
-    id        INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
-    email     VARCHAR(150) UNIQUE NOT NULL,
-    password  VARCHAR(255) NOT NULL,
-    role      ENUM('donor', 'sponsor', 'volunteer', 'admin') NOT NULL
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('donor', 'sponsor', 'volunteer', 'admin') NOT NULL,
+    phone_number VARCHAR(20),
+    address VARCHAR(255),
+    profile_picture VARCHAR(255),
+    is_active BOOLEAN DEFAULT TRUE,
+    last_login TIMESTAMP,
+    verification_token VARCHAR(255),
+    verified_at TIMESTAMP NULL DEFAULT NULL,
+    resetPasswordToken VARCHAR(255),
+    resetPasswordExpires DATETIME,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE payment_method (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    type ENUM('credit_card', 'paypal', 'bank_transfer', 'other') NOT NULL,
+    provider VARCHAR(255),
+    account_number VARCHAR(255),
+    is_default BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE orphan (
-    id           INT AUTO_INCREMENT PRIMARY KEY,
-    full_name    VARCHAR(100) NOT NULL,
-    age          INT NOT NULL,
-    gender       ENUM('male', 'female') NOT NULL,
-    notes        TEXT,  -- Education/health details
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    age INT NOT NULL,
+    gender ENUM('male', 'female') NOT NULL,
+    bio TEXT,
+    needs TEXT,
+    date_of_birth DATE,
+    date_joined DATE,
+    photo VARCHAR(255),
     orphanage_id INT NOT NULL,
-    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE
+    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE sponsorship (
-    id          INT AUTO_INCREMENT PRIMARY KEY,
-    sponsor_id  INT NOT NULL,
-    orphan_id   INT NOT NULL,
-    amount      DECIMAL(10,2) NOT NULL,
-    start_date  DATE NOT NULL,
-    status      ENUM('active', 'completed') DEFAULT 'active',
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sponsor_id INT NOT NULL,
+    orphan_id INT NOT NULL,
+    payment_method_id INT,
+    amount DECIMAL(10, 2) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    status ENUM('active', 'completed', 'pending', 'cancelled') DEFAULT 'active',
+    frequency ENUM('monthly', 'quarterly', 'annually', 'one-time') DEFAULT 'monthly',
+    next_payment_date DATE,
+    notes TEXT,
     FOREIGN KEY (sponsor_id) REFERENCES user(id) ON DELETE CASCADE,
-    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE CASCADE
+    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE CASCADE,
+    FOREIGN KEY (payment_method_id) REFERENCES payment_method(id) ON DELETE SET NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE activity_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    orphan_id INT,
+    action VARCHAR(255) NOT NULL,
+    details TEXT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL,
+    FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE SET NULL
+);
+
+CREATE TABLE volunteer_task (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    orphanage_id INT,
+    description TEXT NOT NULL,
+    due_date DATE,
+    status ENUM('open', 'in progress', 'completed', 'cancelled') DEFAULT 'open',
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE SET NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
