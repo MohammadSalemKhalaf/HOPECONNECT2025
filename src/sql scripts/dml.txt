@@ -41,6 +41,14 @@ INSERT INTO volunteer_task (user_id, orphanage_id, description, due_date, status
 (3, 3, 'توزيع الملابس', '2024-04-01', 'in progress'),
 (3, 4, 'تنظيف ساحة اللعب', '2024-04-10', 'completed');
 
+
+INSERT INTO volunteer_task (orphanage_id, volunteer_id, title, description, required_skill, task_date, status)
+VALUES
+(1, 3, 'نشاط تعليمي', 'تنظيم درس مبسط لتعليم الحروف للأطفال.', 'التعليم', '2025-05-05', 'assigned'),
+(2, NULL, 'يوم صحي', 'مساعدة طبية أولية وفحص بسيط للأطفال.', 'الرعاية الصحية', '2025-05-07', 'open'),
+(3, 3, 'ورشة رسم', 'إقامة ورشة رسم حر للأطفال.', 'التوجيه', '2025-05-10', 'assigned'),
+(4, NULL, 'ألعاب جماعية', 'تنظيم ألعاب ترفيهية في الساحة.', 'الترفيه', '2025-05-12', 'open');
+
 ----------------------------------------------------------------
 SELECT * FROM user;
 

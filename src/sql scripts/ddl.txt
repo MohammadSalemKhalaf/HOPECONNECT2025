@@ -85,3 +85,18 @@ CREATE TABLE sponsorship (
     FOREIGN KEY (sponsor_id) REFERENCES user(id) ON DELETE CASCADE,
     FOREIGN KEY (orphan_id) REFERENCES orphan(id) ON DELETE CASCADE
 );
+
+CREATE TABLE volunteer_task (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orphanage_id INT NOT NULL,
+    volunteer_id INT, -- optional, for assignment
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    required_skill VARCHAR(100),
+    task_date DATE,
+    status ENUM('open', 'assigned', 'completed') DEFAULT 'open',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE,
+    FOREIGN KEY (volunteer_id) REFERENCES user(id) ON DELETE SET NULL
+);
