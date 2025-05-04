@@ -100,3 +100,27 @@ CREATE TABLE volunteer_task (
     FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE,
     FOREIGN KEY (volunteer_id) REFERENCES user(id) ON DELETE SET NULL
 );
+
+
+CREATE TABLE emergency_campaign (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    goal_amount DECIMAL(10,2) NOT NULL,
+    collected_amount DECIMAL(10,2) DEFAULT 0.00,
+    start_date DATE NOT NULL,
+    end_date DATE,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE emergency_donation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    campaign_id INT NOT NULL,
+    user_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    donated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (campaign_id) REFERENCES emergency_campaign(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);

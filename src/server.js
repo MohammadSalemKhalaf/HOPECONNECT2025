@@ -3,7 +3,7 @@ import orphans from "./routes/orphanRoutes.js";
 import users from "./routes/userRoutes.js";
 import donation from "./routes/donationRoutes.js";
 import volunteers from "./routes/volunteerRoutes.js";
-
+import emergencyCampaigns from "./routes/emergencyCampaignRoutes.js";
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -23,6 +23,10 @@ app.use("/api/users", users);
 app.use("/api/donations",donation);
 
 app.use("/api/volunteerstask",volunteers)
+
+
+//feature 5
+app.use('/api/emergency-campaigns',emergencyCampaigns) // create campaign
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
