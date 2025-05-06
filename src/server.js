@@ -5,6 +5,7 @@ import donation from "./routes/donationRoutes.js";
 import volunteers from "./routes/volunteerRoutes.js";
 import emergencyCampaigns from "./routes/emergencyCampaignRoutes.js";
 import orphanageRoutes from "./routes/orphanageRoutes.js";
+import authRoutes from './routes/authRoutes.js';
 const app = express();
 
 const PORT = process.env.PORT || 8000;
@@ -26,6 +27,8 @@ app.use("/api/donations", donation);
 app.use("/api/volunteerstask", volunteers);
 
 app.use("/api/orphanage", orphanageRoutes);
+
+app.use('/api/auth', authRoutes);
 
 //feature 5
 app.use("/api/emergency-campaigns", emergencyCampaigns); // create campaign
