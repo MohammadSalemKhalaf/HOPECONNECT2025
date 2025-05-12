@@ -124,3 +124,15 @@ CREATE TABLE emergency_donation (
     FOREIGN KEY (campaign_id) REFERENCES emergency_campaign(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
+
+CREATE TABLE orphanage_staff (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    orphanage_id INT NOT NULL,
+    position VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_staff_assignment (user_id, orphanage_id)
+);
