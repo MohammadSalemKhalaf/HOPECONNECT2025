@@ -1,3 +1,5 @@
+use hopeconnect;
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS sponsorship;
@@ -125,14 +127,59 @@ CREATE TABLE emergency_donation (
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
-CREATE TABLE orphanage_staff (
+    /*feature 6 ============*/
+CREATE TABLE donation_item (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    donor_id INT NOT NULL,
+    type ENUM('food', 'clothes', 'education', 'medical', 'other') NOT NULL,
+    description TEXT,
+    quantity INT,
     orphanage_id INT NOT NULL,
-    position VARCHAR(100),
-    is_active BOOLEAN DEFAULT TRUE,
+    status ENUM('pending', 'delivered') DEFAULT 'pending',
+    delivery_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
-    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE,
-    UNIQUE KEY unique_staff_assignment (user_id, orphanage_id)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (donor_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (orphanage_id) REFERENCES orphanage(id) ON DELETE CASCADE
 );
+
+CREATE TABLE delivery (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    donation_item_id INT NOT NULL,
+    driver_name VARCHAR(100),
+    vehicle_info VARCHAR(100),
+    delivery_status ENUM('scheduled', 'in_transit', 'delivered') DEFAULT 'scheduled',
+    location_coordinates VARCHAR(255),
+    delivery_time TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (donation_item_id) REFERENCES donation_item(id) ON DELETE CASCADE
+);
+
+    /*feature 7 ============*/
+    
+    CREATE TABLE revenue_transaction (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    donation_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    fee_percentage DECIMAL(5, 2) DEFAULT 5.00,
+    fee_amount DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (donation_id) REFERENCES sponsorship(id) ON DELETE CASCADE
+);
+
+CREATE TABLE partner (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    type ENUM('NGO', 'charity', 'foundation', 'other') NOT NULL,
+    contact_email VARCHAR(150),
+    website VARCHAR(255),
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+
+
