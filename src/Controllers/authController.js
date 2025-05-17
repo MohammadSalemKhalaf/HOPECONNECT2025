@@ -73,3 +73,27 @@ export const getProfile = async (req, res) => {
     res.status(500).json({ message: 'failed to fetch profile' });
   }
 };
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+    const userId = req.user.id;
+    const [users] = await pool.query('SELECT * FROM user WHERE id = ?', [userId]);
+    if (users.length === 0) {
+      return res.status(404).json({ message: 'user not found' });
+    }
+
+    const user = users[0];
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'old password is incorrect' });
+    }
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await pool.query('UPDATE user SET password = ? WHERE id = ?', [hashedPassword, userId]);
+
+    res.json({ message: 'password change successfully' });
+  } catch (error) {
+    console.error('Password reset error:', error.message);
+    res.status(500).json({ message: 'password reset fail' });
+  }
+};

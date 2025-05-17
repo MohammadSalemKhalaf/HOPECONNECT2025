@@ -1,12 +1,12 @@
-// src/routes/authRoutes.js
 import express from 'express';
 import {
   register,
   login,
-  getProfile
+  getProfile,
+  resetPassword 
 } from '../Controllers/authController.js';
 
-import authenticateToken from '../middlewares/authMiddleware.js';
+import authMiddleware from '../middlewares/authMiddleware.js'; 
 
 const router = express.Router();
 
@@ -14,6 +14,8 @@ router.post('/register', register);
 
 router.post('/login', login);
 
-router.get('/profile', authenticateToken(), getProfile);
+router.get('/profile', authMiddleware(), getProfile);
+
+router.post('/reset-password', authMiddleware(), resetPassword);
 
 export default router;

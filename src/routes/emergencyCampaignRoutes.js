@@ -3,7 +3,7 @@ import {
   createCampaign, 
   getAllCampaigns, 
   donateToCampaign 
-} from '../controllers/emergencyCampaignController.js';
+} from '../Controllers/emergencyCampaignController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
@@ -11,10 +11,10 @@ const router = express.Router();
 // Public access to view campaigns
 router.get('/', getAllCampaigns);
 
-// Admin-only for creating campaigns
+// Admin only for creating campaigns
 router.post('/', authMiddleware(['admin']), createCampaign);
 
-// Donors and admin can donate
+// donor and admin 
 router.post('/:id/donate', authMiddleware(['donor', 'admin']), donateToCampaign);
 
 export default router;
