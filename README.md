@@ -150,6 +150,10 @@ Watch the platform in action and explore the workflow.
 ## 📱 Contact
 
 * Mohammad Khalaf – mohammadkhalaf3hfg@gmail.com  
+* Mohammad Khalaf – Eng.jawad121@hotmail.com 
+* Mohammad Esawi – esawiaburakang@gmail.com  
+
+
 
 <p align="center"><a href="https://github.com/MohammadSalemKhalaf/HOPECONNECT2025/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=MohammadSalemKhalaf/HOPECONNECT2025" />
