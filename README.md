@@ -59,9 +59,9 @@
 <a name="gs"></a>
 ## 🚀 Getting Started
 
-### ⚙️ Running the project
+### ⚙️ Running the Project
 
-#### 1. Clone the repository:
+#### 1. Clone the Repository:
 ```bash
 git clone https://github.com/JawadHamdan03/HopeConnect2025.git
 ```
@@ -71,22 +71,27 @@ git clone https://github.com/JawadHamdan03/HopeConnect2025.git
 npm install
 ```
 
-#### 3. Configure Environment Variables:
-Rename `.env.example` to `.env` and update your database settings:
+#### 3. Environment Configuration:
+This project uses a `.env` file for environment variables. Ensure you have the following in your `.env` file:
+
 ```
+PORT=8000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
+DB_PASSWORD=123456
 DB_NAME=hopeconnect
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=123456
+EMAIL_USER=
+EMAIL_PASS=
+NEWS_API_KEY=6c759e017da24b0d94628f382f277d75
 ```
+
+> ⚠️ Make sure your MySQL server is running and the database `hopeconnect` is created before starting the app.
 
 #### 4. Run the Application:
 ```bash
 npm start
 ```
-
-Make sure your MySQL server is running and the database is created.
 
 ---
 
