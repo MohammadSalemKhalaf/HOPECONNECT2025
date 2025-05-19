@@ -138,7 +138,7 @@ All API endpoints are tested and documented using Postman.
 ## 🎥 Demo
 
 Watch the platform in action and explore the workflow.  
-🔗 [**View Demo on Google Drive**](https://your-demo-link.com)
+🔗 [**View Demo on Google Drive**]()
 
 ---
 
