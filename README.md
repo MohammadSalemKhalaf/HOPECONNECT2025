@@ -2,8 +2,7 @@
 <a name="readme-top"></a>
 <div align="center">
   <br>
-  <img src="one.jpg" alt="HopeConnect Logo" width="200">
-</div>
+<img src="one.png" alt="HopeConnect Logo" width="1454" height="399"></div>
 
 <div align="center">
   <h1>HopeConnect 2025</h1>
@@ -18,7 +17,7 @@
 ---
 <br>
 <div align="center">
-  <img src="two.jpg" alt="Description of the image">
+  <img src="two.png" alt="Description of the image" width="1454" height="399">
 </div>
 <br>
 <br>
@@ -138,7 +137,7 @@ All API endpoints are tested and documented using Postman.
 ## 🎥 Demo
 
 Watch the platform in action and explore the workflow.  
-🔗 [**View Demo on Google Drive**]()
+🔗 [**View Demo on Google Drive**](https://your-demo-link.com)
 
 ---
 
