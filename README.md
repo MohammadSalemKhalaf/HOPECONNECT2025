@@ -151,8 +151,8 @@ Watch the platform in action and explore the workflow.
 
 * Mohammad Khalaf – mohammadkhalaf3hfg@gmail.com  
 
-<p align="center"><a href="https://github.com/yourusername/hopeconnect-2025/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=yourusername/hopeconnect-2025" />
+<p align="center"><a href="https://github.com/JawadHamdan03/HopeConnect2025/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=JawadHamdan03/hopeconnect-2025" />
 </a></p>
 
 <p align="right">(<a href="#readme-top">⬆️ Back to top</a>)</p>
