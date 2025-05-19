@@ -48,11 +48,11 @@
 <a name="bw"></a>
 ## 🔨 Built With
 
-* ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node-dot-js&logoColor=white)  
-* ![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)  
-* ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)  
-* ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)  
-* ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)  
+[![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node-dot-js&logoColor=white)][NodeJSURL]  
+[![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)][ExpressURL]  
+[![MySQL]][MySQLURL]  
+[![Postman]][PostmanURL]  
+[![GitHub]][GithubURL]
 
 ---
 
@@ -156,3 +156,21 @@ Watch the platform in action and explore the workflow.
 </a></p>
 
 <p align="right">(<a href="#readme-top">⬆️ Back to top</a>)</p>
+
+
+<!-- Badge & Link References -->
+[MySQL]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white
+[MySQLURL]: https://www.mysql.com/
+
+[NodeJSURL]: https://nodejs.org/
+[ExpressURL]: https://expressjs.com/
+
+[Postman]: https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[PostmanURL]: https://www.postman.com/
+
+[GitHub]: https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white
+[GithubURL]: https://github.com/
+
+<!-- Your Repository -->
+[HopeConnectRepo]: https://github.com/JawadHamdan03/HopeConnect2025
+
