@@ -150,7 +150,7 @@ Watch the platform in action and explore the workflow.
 ## 📱 Contact
 
 * Mohammad Khalaf – mohammadkhalaf3hfg@gmail.com  
-* Mohammad Khalaf – Eng.jawad121@hotmail.com 
+* Jawad Hamdan – Eng.jawad121@hotmail.com 
 * Mohammad Esawi – esawiaburakang@gmail.com  
 
 
