@@ -9,11 +9,12 @@ import authRoutes from './routes/authRoutes.js';
 import gazaNews from './routes/newsRoutes.js';
 import logisticsRoutes from './routes/logisticsRoutes.js';
 import revenueRoutes from './routes/revenueRoutes.js';
+import trustRoutes from "./routes/trustRoutes.js";
+
 const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -33,16 +34,16 @@ app.use("/api/orphanage", orphanageRoutes);
 
 app.use('/api/auth', authRoutes);
 
-//feature 5
+app.use("/api/trust", trustRoutes);
+
+
 app.use("/api/emergency-campaigns", emergencyCampaigns); // create campaign
 
-//faeture 6
 
 app.use('/api/logistics', logisticsRoutes);
-//feature 7
 
 app.use("/api/revenue", revenueRoutes);
-//external api
+
 app.use("/api/gazaNews",gazaNews);
 
 app.listen(PORT, () => {
