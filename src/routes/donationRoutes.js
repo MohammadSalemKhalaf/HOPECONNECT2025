@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', authMiddleware(['donor', 'admin']), createSponsorship);
 
 
-router.get('/', getAllSponsorships);
+router.get('/', authMiddleware([ 'orphanage_staff','admin']), getAllSponsorships);
 router.get('/:id', getSponsorshipById);
 
 
