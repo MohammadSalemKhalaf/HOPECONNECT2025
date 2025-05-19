@@ -63,7 +63,7 @@
 
 #### 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/hopeconnect-2025.git
+git clone https://github.com/JawadHamdan03/HopeConnect2025.git
 ```
 
 #### 2. Install Dependencies:
