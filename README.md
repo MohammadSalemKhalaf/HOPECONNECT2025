@@ -134,7 +134,7 @@ npm start
 ## 📡 API Documentation
 
 All API endpoints are tested and documented using Postman.  
-📄 [**Click here to view Postman Documentation**](https://documenter.getpostman.com/view/YOUR-DOC-ID)
+📄 [**Click here to view Postman Documentation**](https://documenter.getpostman.com/view/40430282/2sB2qXkiRe)
 
 ---
 
