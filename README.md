@@ -8,7 +8,7 @@
   <h1>HopeConnect 2025</h1>
   <p>Empowering Orphan Support through Technology</p>
   <p align="center">
-    <a href="#">🚀 View Demo</a>
+    <a href="https://drive.google.com/file/d/1Pf7L5RsSdle9evbLEcafiwNShlLLf02Y/view">🚀 View Demo</a>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://github.com/shahdyaseen/Advanced-Software/issues/new?fbclid=IwY2xjawGbSfVleHRuA2FlbQIxMAABHfpruLp4mAM9uicRXzYqY49NZ9hJ7s6nwmzCuvIEB-5Ytoof13P6C6TWNA_aem_REREq35TkL-EGpRyJ1EFrQ">🐞 Report Bug </a> 
  </p>
@@ -142,7 +142,7 @@ All API endpoints are tested and documented using Postman.
 ## 🎥 Demo
 
 Watch the platform in action and explore the workflow.  
-🔗 [**View Demo on Google Drive**](https://your-demo-link.com)
+🔗 [**View Demo on Google Drive**](https://drive.google.com/file/d/1Pf7L5RsSdle9evbLEcafiwNShlLLf02Y/view)
 
 ---
 
